@@ -73,3 +73,24 @@
           address: string[]
       }
       ```
+1. *type aliases* can easily use **utility types** - interface can too but with an ugly syntax
+
+      ```ts
+      type UserProps = {
+          name: string;
+          age: number;
+          createdAt: Date;
+      }
+
+      type GuestProps = Omit<UserProps, "name" | "age"> // ✅
+
+      ```
+
+      ```ts
+      interface UserProps {
+          name: string;
+          age: number;
+          createdAt: Date;
+      }
+      interface GuestProps extends Omit<UserProps, "name" | "age"> {} // we must add an empty curly braces to make it work
+      ```
