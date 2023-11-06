@@ -55,3 +55,21 @@
     // we must use addressObject.address to access the value
     const displayAddress = (addressObject: AddressProps) => console.log(addressObject.address);
     ```
+
+
+    1. *type aliases* can describe union types whereas *interface* cannot:
+
+      ```ts
+      type AddressProps = string | string[];
+      let address = "42, rue des jeûneurs"; // ✅
+      address = ["42, rue des jeûneurs"]; // ✅
+      ```
+
+      ```ts
+      interface StringAddressProps {
+          address: string
+      } | // ❌ // an interface cannot describe union types since we don't have an equal sign and we always describe a single object
+      interface StringArrayAddressProps {
+          address: string[]
+      }
+      ```
