@@ -94,3 +94,17 @@
       }
       interface GuestProps extends Omit<UserProps, "name" | "age"> {} // we must add an empty curly braces to make it work
       ```
+      1. *type aliases* can easily describe **tuples** - interface can too but with an ugly syntax
+
+      ```ts
+      type Address = [number, string];
+
+      const address: Address = [28, "rue des jeûneurs"]; // ✅
+      ```
+
+      ```ts
+  interface Address extends Array<number | string> {
+      0: number;
+      1: string;
+  }
+      ```
