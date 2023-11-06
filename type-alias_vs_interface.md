@@ -124,3 +124,26 @@
   type TagTreeProps = typeof company.tagTree; // ✅
   interface TagTreeProps extends typeof company.tagTree {} // ❌ interfaces cannot extend a type directly, they can only extend other interfaces or classes.
   ```
+
+1. *interfaces* can be **merged**. *Interfaces* are **open** and *type aliases* are **closed**
+
+```ts
+interface User {
+    name: string;
+}
+
+interface User {
+    age: number;
+}
+
+interface User {
+    address: string;
+}
+
+const user: User = {
+    name: "John",
+    age: 30,
+    address: "42, rue des jeûneurs",
+}; // ✅ you can have multiple declarations with the same identifier (confusing, right ?). The compiler will merge all declarations of User into one single interface with all properties merged.
+
+```
