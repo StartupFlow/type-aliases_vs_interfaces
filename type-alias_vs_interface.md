@@ -147,3 +147,16 @@ const user: User = {
 }; // ✅ you can have multiple declarations with the same identifier (confusing, right ?). The compiler will merge all declarations of User into one single interface with all properties merged.
 
 ```
+1. *type aliases* can be used for classes too
+
+  ```ts
+  type UserProps = {
+      name: string;
+      age: number;
+  }
+
+  class User implements UserProps {
+      constructor(name: string, age: number) {
+      }
+  }
+  ```
