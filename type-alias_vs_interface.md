@@ -108,3 +108,19 @@
       1: string;
   }
       ```
+
+1. extracting type from something else
+  ```ts
+  const company = {
+      name: "Apple",
+      address: "1 Infinite Loop",
+      employees: 100000,
+    tagTree = {
+      name: "Tech",
+      tags: ["Hardware", "Software", "AI"],
+    }
+  }
+
+  type TagTreeProps = typeof company.tagTree; // ✅
+  interface TagTreeProps extends typeof company.tagTree {} // ❌ interfaces cannot extend a type directly, they can only extend other interfaces or classes.
+  ```
